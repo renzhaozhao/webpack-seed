@@ -13,7 +13,13 @@ module.exports = {
     //使用source-map调试
     devtool: '#source-map',
     module: {
-        loaders: [ {
+        loaders: [{
+            test: /\.js[x]?$/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015', 'stage-0']
+            }
+        }, {
             test: /\.less$/,
             loader: "style!css!less"
         }]

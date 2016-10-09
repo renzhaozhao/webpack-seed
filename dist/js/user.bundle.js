@@ -1,2 +1,2 @@
-webpackJsonp([1],[function(o,n,c){var d=c(6);document.body.appendChild(d()),console.log("这是用户页面")}]);
+webpackJsonp([1],[function(o,n,c){"use strict";var e=c(7);document.body.appendChild(e()),console.log("这是用户页面")}]);
 //# sourceMappingURL=user.bundle.js.map
