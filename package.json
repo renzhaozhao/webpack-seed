@@ -1,0 +1,19 @@
+{
+  "name": "webpack-seed",
+  "version": "1.0.0",
+  "description": "webpack种子",
+  "scripts": {
+    "start": "webpack --progress --colors",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "author": "renzhao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renzhaozhao/webpack-seed.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
