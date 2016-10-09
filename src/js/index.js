@@ -1,0 +1,7 @@
+require('../less/index.less');
+var com = require("./lib/com.js");
+
+document.body.appendChild(com());
+
+
+console.log('这是首页');

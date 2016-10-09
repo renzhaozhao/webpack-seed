@@ -1,29 +1,34 @@
 var path = require('path');
 var webpack = require('webpack');
-var srcPath = './app/js/';
-var distPath = path.join(__dirname, 'dist/js');
+var srcPath = './src/js/';
 module.exports = {
     entry: {
         index: srcPath + 'index.js',
         user: srcPath + 'user.js'
     },
     output: {
-        path: distPath,
-        filename: "[name].bundle.js",
-        publicPath: path.join(__dirname,'dist')
+        path: 'dist/js',
+        filename: "[name].bundle.js"
     },
     //使用source-map调试
     devtool: '#source-map',
     module: {
-        loaders: [{
-            test: /\.js[x]?$/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'stage-0']
-            }
-        }, {
+        loaders: [ {
             test: /\.less$/,
             loader: "style!css!less"
         }]
-    }
+    },
+    plugins: [
+        // 创建公用部分
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.js',
+        }),
+        //代码压缩
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
 }
