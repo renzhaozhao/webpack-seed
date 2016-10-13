@@ -3,8 +3,8 @@ var webpack = require('webpack');
 var srcPath = './src/js/';
 module.exports = {
     entry: {
-        index: srcPath + 'index.js',
-        user: srcPath + 'user.js'
+        index: [srcPath + 'index.js'],
+        user: [srcPath + 'user.js']
     },
     output: {
         path: 'dist/js',
@@ -15,14 +15,15 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js[x]?$/,
+            exclude: /node_modules/,
             loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'stage-0']
-            }
         }, {
             test: /\.less$/,
             loader: "style!css!less"
         }]
+    },
+    resolve: {
+        extensions: ['', '.js', '.json']
     },
     plugins: [
         // 创建公用部分
@@ -36,5 +37,8 @@ module.exports = {
                 warnings: false
             }
         })
-    ]
+    ],
+    babel:{
+        plugins:['transform-runtime']
+    }
 }
