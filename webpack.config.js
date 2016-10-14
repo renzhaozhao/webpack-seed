@@ -1,4 +1,6 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
     entry: {
         index: './src/index.js'
@@ -19,7 +21,7 @@ module.exports = {
             }
         }, {
             test: /\.less$/,
-            loader: "style!css!less"
+            loader: "style!css!less!postcss"
         }]
     },
     resolve: {
@@ -33,9 +35,10 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
-    babel:{
-        plugins:['transform-runtime']
+    babel: {
+        plugins: ['transform-runtime']
     },
+    postcss: [autoprefixer()],
     devServer: {
         contentBase: './',
         host: 'localhost',
