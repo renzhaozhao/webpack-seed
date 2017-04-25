@@ -1,49 +1,24 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+const path = require('path')
 
 module.exports = {
     entry: {
         index: './src/index.js'
     },
     output: {
-        path: './dist/',
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
         publicPath: '/dist'
     },
     devtool: '#source-map',
     module: {
-        loaders: [{
-            test: /\.js[x]?$/,
+        rules: [{
+            test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015', 'stage-0', 'react']
-            }
-        }, {
-            test: /\.less$/,
-            loader: "style!css!less!postcss"
+            use: 'babel-loader'
         }]
     },
-    resolve: {
-        extensions: ['', '.js', '.json']
-    },
-    plugins: [
-        // 创建公用部分
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            filename: 'common.js',
-        }),
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    babel: {
-        plugins: ['transform-runtime']
-    },
-    postcss: [autoprefixer()],
     devServer: {
         contentBase: './',
-        host: 'localhost',
-        port: 3200,
-        inline: true,
-        hot: true,
+        port: 3200
     }
 }
