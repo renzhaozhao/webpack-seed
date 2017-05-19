@@ -1,16 +1,8 @@
-import Person from './lib/person';
+import React from 'react'
+import { render } from 'react-dom'
 
-let p = new Person('张三', 20);
-console.log(p.say());
+import App from './components/App'
+import './less/test.less'
 
 
-function* helloWorldGenerator() {
-    yield 'hello';
-    yield 'world';
-    return 'ending';
-}
-
-var hw = helloWorldGenerator();
-
-console.log(hw.next());
-console.log(hw.next());
+render(<App />, document.getElementById('app'))
