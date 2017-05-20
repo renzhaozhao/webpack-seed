@@ -7,8 +7,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <img src={require('../assets/avatar.png')} style={{ width: 100 }} />
-        <img src={require('../assets/test.jpg')} />
+        <img src={require('../assets/avatar.png')} style={{ width: 100 }} alt="" />
+        <img src={require('../assets/test.jpg')} alt="" />
       </div>
     )
   }
