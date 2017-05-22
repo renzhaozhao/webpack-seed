@@ -4,13 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: {
     index: './src/index.js',
     vendor: ['react', 'react-dom']
   },
   output: {
-    filename: 'static/js/[name].js',
+    filename: 'static/js/[name].[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -58,7 +58,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 20000,
-            name: 'image/[hash:12].[ext]'
+            name: 'image/[hash:8].[ext]'
           }
         }]
       }
@@ -68,18 +68,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: 'public/index.html',
-      favicon: 'public/favicon.ico'
+      favicon: 'public/favicon.ico',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['common', 'vendor']
     })
-  ],
-  devServer: {
-    contentBase: './',
-    host: 'localhost',
-    port: 3200,
-    inline: true,
-    hot: true,
-  }
+  ]
 }
