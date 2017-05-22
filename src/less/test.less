@@ -3,3 +3,20 @@
 body {
   background-color: @blue;
 }
+
+img {
+  transform: rotate(360deg);
+  box-shadow: 0 0 5px #ccc;
+  transition: 1s;
+  animation: circle 3s linear infinite;
+}
+
+@keyframes circle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
