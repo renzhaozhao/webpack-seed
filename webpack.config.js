@@ -6,7 +6,10 @@ const autoprefixer = require('autoprefixer')
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
-    index: './src/index.js',
+    index: [
+      'webpack/hot/only-dev-server',
+      './src/index.js'
+    ],
     vendor: ['react', 'react-dom']
   },
   output: {
@@ -71,6 +74,7 @@ module.exports = {
       favicon: 'public/favicon.ico'
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['common', 'vendor']
     })

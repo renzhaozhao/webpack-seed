@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "rimraf dist && webpack -p --config webpack.config.prod.js",
+    "start": "webpack-dev-server --color",
+    "build": "rimraf dist && webpack -p --color  --config webpack.config.prod.js",
     "lint": "eslint --ext .js,.jsx src/"
   },
   "keywords": [],

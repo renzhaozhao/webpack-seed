@@ -23,6 +23,8 @@ class App extends Component {
         <img src={require('../assets/test.jpg')} alt="" />
         {this.state.number}
         <button onClick={this.add}>++</button>
+
+        hello world
       </div>
     )
   }
