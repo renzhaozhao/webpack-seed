@@ -7,6 +7,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     index: [
+      'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
       './src/index.js'
     ],
@@ -80,7 +81,8 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: './',
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     host: 'localhost',
     port: 3200,
     inline: true,

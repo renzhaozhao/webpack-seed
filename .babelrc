@@ -1,11 +1,12 @@
 {
   "presets": [
     ["env", {
-      "module": false
+      "modules": false
     }],
     "react"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     "transform-runtime",
     "transform-class-properties"
   ]

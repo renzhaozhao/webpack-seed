@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "next"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
