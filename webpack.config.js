@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    vendor: ['react', 'react-dom']
+  },
   output: {
     filename: 'static/js/[name].js',
     path: path.resolve(__dirname, 'dist'),
@@ -53,7 +56,10 @@ module.exports = {
       template: './index.html',
       favicon: 'src/favicon.ico'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common', 'vendor']
+    })
   ],
   devServer: {
     contentBase: './',
