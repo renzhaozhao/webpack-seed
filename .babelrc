@@ -6,8 +6,8 @@
     "react"
   ],
   "plugins": [
-    "react-hot-loader/babel",
-    "transform-runtime",
-    "transform-class-properties"
+    "react-hot-loader/babel", //react-hot-loader
+    "transform-runtime", // 编译generator和async
+    "transform-class-properties" // react支持静态方法
   ]
 }
